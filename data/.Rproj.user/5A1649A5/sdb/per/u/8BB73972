@@ -1,0 +1,18 @@
+{
+    "contents" : "---\ntitle: \"The title\"\nshorttitle: \"Title\"\nauthor: \n  - name: First Author\n    affiliation: 1\n    corresponding: yes    # Define only one corresponding author\n    address: Postal address\n    email: my@email.com\n  - name: Ernst-August Doelle\n    affiliation: \"1,2\"\naffiliation:\n  - id: 1\n    institution: Wilhelm-Wundt-University\n  - id: 2\n    institution: Konstanz Business School\n\nabstract: |\n  Enter abstract here (note the indentation, if you start a new paragraph).\n  \nauthor_note: |  \n  Complete departmental affiliations for each author (note the indentation, if you start a new paragraph).\n\n  Enter author note here.\n  \nkeywords: \"keywords\"\n\nwordcount: X\n\nclass: man\nlang: english\nfigsintext: no\nfigurelist: no\ntablelist: no\nlineno: yes\nbibliography:\n  - r-references.bib\n\noutput: papaja::apa6_pdf\n---\n\n```{r message = FALSE, warning = FALSE}\nlibrary(\"papaja\")\n```\n\n\n# Methods\nWe report how we determined our sample size, all data exclusions (if any), all manipulations, and all measures in the study. <!-- 21-word solution (Simmons, Nelson & Simonsohn, 2012; retrieved from http://ssrn.com/abstract=2160588) -->\n\n## Participants\n\n## Material\n\n## Procedure\n\n## Data analysis\nWe used `r cite_r(\"r-references.bib\")` for all our analyses.\n\n\n# Results\n\n# Discussion\n\n\n\\newpage\n\n# References\n```{r create_r-references}\nr_refs(file = \"r-references.bib\")\n```\n\n\\setlength{\\parindent}{-0.5in}\n\\setlength{\\leftskip}{0.5in}\n",
+    "created" : 1475863535238.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "3782841463",
+    "id" : "8BB73972",
+    "lastKnownWriteTime" : 7011605692497750387,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "type" : "r_markdown"
+}
