@@ -3,3 +3,10 @@
 ```R
 devtools::install_github("crsh/papaja")
 ```
+
+## Collecting articles
+
+```bash
+# Get the crossref results through getpapers
+./getpapers_issn.sh journals.csv org-mgmt 1995 2015
+```
