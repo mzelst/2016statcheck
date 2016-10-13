@@ -1,0 +1,5 @@
+## Dependencies
+
+```R
+devtools::install_github("crsh/papaja")
+```

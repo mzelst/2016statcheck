@@ -3,5 +3,5 @@
 LICENSE
 /articles/*
 /articles/*
-/submission/*
+/submission/*.log
 .Rproj.user
