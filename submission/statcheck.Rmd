@@ -1,0 +1,103 @@
+---
+title: "The prevalence of statistical reporting inconsistencies in management research: A replication of Nuijten et al. (2015)"
+shorttitle: statistical reporting inconsistencies
+author: 
+  - name: Johannes M. van Zelst
+    affiliation: 1
+    corresponding: yes  # Define only one corresponding author
+    email: j.m.vanzelst@uvt.nl
+    address: Warandelaan 2, 5037 AB Tilburg, The Netherlands
+  - name: Peter Kruyen
+    affiliation: 2
+    corresponding: no  # Define only one corresponding author
+    email: p.m.kruyen@fm.ru.nl
+    address: Thomas van Aquinostraat 5.1.43, 6525 GD Nijmegen, The Netherlands
+  - name: Chris H. J. Hartgerink
+    affiliation: 3
+    corresponding: no  # Define only one corresponding author
+    email: c.h.j.hartgerink@uvt.nl
+    address: Warandelaan 2, 5037 AB Tilburg, The Netherlands
+affiliation:
+ - id: 1
+   institution: Department of Organization Studies, Tilburg University
+ - id: 2
+   institution: Department of Public Administration, Radboud University Nijmegen
+ - id: 3
+   institution: Department of Methodology and Statistics, Tilburg University
+abstract: 
+ This study documents reporting inconsistencies in a sample of over X p-values reported in forty management journals from 1995 until 2015, using the new R package statcheck. We find that X% of the articles in management research contains at least one reporting inconsistency and X% contains at least one gross inconsistency, which might alter the conclusions. This corroborates/disagrees with findings by @Nuijten2015 who found similar/dissimilar results.
+ 
+date: '`r format(Sys.time(), "%d %B, %Y")`'
+output: papaja::apa6_pdf
+style: ../bibliography/apa.csl
+bibliography: ../bibliography/statcheck.bib
+
+class: man
+lang: english
+figsintext: yes
+figurelist: no
+tablelist: no
+lineno: yes
+---
+
+```{r dependencies, echo = FALSE}
+if (!require(xtable)) install.packages('xtable')
+library(xtable)
+
+run <- '../'
+# run <- ''
+```
+
+# Introduction
+
+Incorrect reporting of findings in science has a trickle-down effect; not only are the conclusions potentially affected, but all reuse of those findings are tainted (e.g., they bias meta-analyses). The use of Null Hypothesis Significance Testing (NHST) is widespread in management research [@Lockett2014; @Orlitzky2012; @Schwab2011] and the reporting of statistical test results (e.g., $t(40)=2.19,p=`r round(pt(2.19, 40, lower.tail = FALSE) * 2, 3)`$) has proven to be subject to mistakes. Mistakes, or what we will call reporting inconsistencies, can be found across different fields in science [e.g., medicine and psychology; @Bakker2011; @Garcia-Berthou2004; @Nuijten2015] and occur in approximately 1 out of 10 reported results. Given that any empirical researcher reports numerous statistical results over their careers, we are all bound to be affected by such reporting inconsistencies. Some inconsistencies can even affect the statistical significance, which has been indicated to happen in approximately 1 out of 8 papers [@Nuijten2015].
+
+There is no reason to assume that management and organization research would not be afflicted by such inaccuracies. An assessment of the prevalence of statistical inconsistencies in the field of management and public administration is required to uphold the trustworthiness in our results and theories. @Goldfarb2016 already found that effect sizes in management research are inflated by around 24-40%; others noted that "honest mistakes and possible scientific misconduct pose a worrisome threat to the trustworthiness of accumulated knowledge" [@Bergh2016a, p. 2]. 
+
+In this paper, we present the results of a direct replication [@Nuijten2015] investigating reporting inconsistencies in management and organization research. We investigate the prevalence of statistical reporting inconsistencies in 33 leading management and public administration journals across a timespan of twenty years. A reporting inconsistency can occur when either the test statistic, the degrees of freedom, or the resulting $p$-value is misreported. Given its substantive importance, we focus on whether the $p$-value matches the reported test statistic and degrees of freedom. An inconsistent $p$-value can arise from misreporting any of these three reported results. Nonetheless, the misreporting of any of these values has consequences for the drawn conclusions, be them with respect to the underlying theory or effect of interest.
+
+Reporting inconsistencies are primarily the result of honest mistakes, but can also be the result of  purposeful misreporting. Honest mistakes can be manifold, of which the following two are non-exclusive illustrations. First, authors can mistakenly round a $p$-value. For example, a researcher incorrectly rounds a $p$-value after their child has kept them up all night, resulting in a $p$-value of 0.056 being rounded as $p=0.05$. Second, a researcher might make a minor typographic error. For example, $F(2,56)=1.203,p<.001$ instead of $F(2,56)=12.03,p<.001$. The latter example produces a reporting inconsistency, without the $p$-value being incorrect [@Nuijten2015 p. 10]. 
+
+Authors sometimes engage in intentionally misreporting of $p$-values to make the result come across as statistically significant while it actually was nonsignificant. @Banks2016 find in a large-scale survey of management scholars that more than 10% of their respondents engaged in this form of questionable research practice in at least one study, confirmed by @10.7717/peerj.1935 where 14% of $p$-values reported as .05 (statistically significant) were in fact larger than .05 (statistically nonsignificant). Given the serious consequences of reporting inconsistencies, whether accidental or purposeful, we attempt to systematically document the prevalence of statistical reporting inconsistencies in the fields of management and organization research. 
+
+This paper is a direct replication of @Nuijten2015 and our results can be directly compared. As such, it provides a first estimate whether reporting inconsistencies are just as prevalent, more prevalent, or less prevalent in the management and organization research fields, when compared to psychology. Additionally, we offer several solutions that might help to partly solve the problem of reporting inconsistencies in the future.
+
+# Methods 
+
+## Sample
+
+The first- and second author compiled a list of 35 journals in management and organization research that are analyzed for reporting inconsistencies. These journals are (primarily) empirical journals and are widely read throughout these fields. For each journal, we collected the articles published from 1995 through 2015 from CrossRef with the command line utility `getpapers` [`v0.4.9`; @getpapers], and subsequently downloaded all articles in `HTML` and/or `PDF` format available within the University of Cambridge subscription with `quickscrape` [`v0.4.7`; @quickscrape]. Table X depicts the list of journals and the downloaded articles per file format. 
+
+```{r journal table, echo = FALSE, include=TRUE}
+journals <- read.csv(sprintf('%sscraping/journals.csv', run), header = TRUE)
+journals$articles <- 'PLACEHOLDER'
+journals$downloaded_html <- 'PLACEHOLDER'
+journals$downloaded_pdf <- 'PLACEHOLDER'
+# journals <- rbind('Total', '', '', sum(journals$articles), sum(journals$downloaded_html), sum(journals$downloaded_pdf)) # Uncomment this when numbers are added.
+# knitr::kable(journals, format = "latex")
+
+# CHJH: Marino, dit moet nog even uitgevogeld worden hoe we die mooi op een pagina krijgen. Dat papaja maakt het heel verwarrend want nu moet er latex code in de markdown file gefrot worden. Kun je nagaan?
+```
+
+In order to scan the collected articles for reporting inconsistencies, we applied the `R` package `statcheck` [`v1.2.2`; @Nuijten2015]. `statcheck` extracts statistical test results and recalculates $p$-values based on the reported test statistics and their degrees of freedom. `statcheck` executes the procedure in four steps. First, statcheck processes an `HTML` or `PDF` file into a readable format. `PDF` files are more problematic given the document structure, and `HTML` is to be preferred [@Nuijten2015]. For example, text is frequently placed in multiple columns, where a test result might span multiple columns and will not be properly extracted in the conversion of the `PDF` file due to the way this document is structured. `HTML` files have fewer processing problems and are hence preferred.
+
+`statcheck` extracts $t,F,r,\chi^2$, and $Z$ test results from the text and checks whether there might be a reporting inconsistency. Considering that `statcheck` is an automated procedure, it should be regarded as identifying potential reporting inconsistencies and should not be considered definitive. The algorithm is currently capable to read results that are reported in the format prescribed by the American Psychological Association (APA). This format dates back to 1983 [@apa1983; @apa2001; @apa2010], encompassing the timespan we investigate (i.e., 1995-2015). For example, an APA formatted $F$-test is reported as $F(1, 238)=2.94,p=`r round(pf(2.94, 1, 238, lower.tail = FALSE),3)`$. 
+
+Based on the reported $t,F,r,\chi^2$ or $Z$ test results (and degrees of freedom), `statcheck` recalculates the $p$-value and compares this to the reported $p$-value. This recalculation assumes that the test result is correctly reported and that the $p$-value is two-tailed. However, to catch potential one-tailed tests, `statcheck` searches the article for any mentions of a one-tailed test and does not consider it a reporting inconsistency if the recalculated $p$-value divided by two is equal to the reported $p$-value.
+
+If the recalculated $p$-value differs from the reported $p$-value, `statcheck` considers this a reporting inconsistency; if the statistical significance of the recalculated $p$-value is different from the reported $p$-value, this is considered a decision inconsistency. As such, a decision inconsistency are those inconsistencies that warrant the most attention, given that they might alter the substantive conclusions (depending how important the result is to the main findings). In order to prevent unnecessary overdetection of reporting inconsistencies, the algorithm takes into account potential rounding errors in the test-value (e.g., when rounded to two decimal places, a value of 1.22 can be the result of anything from 1.215 through 1.224). We investigate decision inconsistencies under $\alpha=.05$ (the default of `statcheck`) and $\alpha=.10$.
+
+The advantage of the automated procedure is that it allows us to assess the prevalence of reporting inconsistencies on a large scale. Furthermore, the automated procedure eliminates human errors which are bound to be made when results are recalculated by hand. The disadvantage of an automated procedure is that it will miss statistical tests that are not reported according to APA standards and can introduce machine error when the algorithm is misspecified or unable to handle specific cases [e.g., corrected $p$-values; @2016arXiv161001010S]. An extensive validity check, where manually extracted results from a set of research papers was compared to the results after applying `statcheck` to the same research papers, indicated that the inter-rater reliability between manual and automated was 0.76 for reporting inconsistencies and 0.89 for decision inconsistencies [@Nuijten2015]. Nonetheless, the algorithm might incorrectly find reporting inconsistencies when corrected $p$-values are reported [@2016arXiv161001010S].
+
+<!-- Discussie meer? -->
+`statcheck` is currently not designed to read results that are reported in tables. Therefore, we are unable to assess the prevalence of errors in tables that report regression results, for example. Given that regression tables are also frequent in the fields of management and organization research, the results from this paper should not be generalized to all statistical test results, but only to the APA reported test results. 
+
+
+## Analyses
+
+Given that the algorithm extracts (almost) all APA reported test results, the collected dataset is the population of APA-reported test results for the included journals. Hence, we refrain from using NHST in our analyses and only descriptively model the data. Considering that the extraction quality differs between `HTML` and `PDF` files, we will analyze the results from both separately.
+
+We report the prevalence of (gross) inconsistencies per journal and explore trends of the extracted results over time. We also compare whether gross inconsistencies are more likely for results that are reported as statistically significant as compared to insignificant results. Last, we analyze a number of journal-level covariates to observe whether they influence the number of inconsistencies. We explore whether there are differences in the percentage of inconsistencies across different publishers: we included journals from general publishers such as Wiley, Elsevier, and Sage as well as dedicated publishers INFORMS, the Academy of Management, and one APA journal. We also report regression results for the relationship between journal impact factor and the amount of inconsistencies. 
+
+# References
+
