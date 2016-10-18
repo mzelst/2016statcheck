@@ -99,7 +99,5 @@ Given that the algorithm extracts (almost) all APA reported test results, the co
 
 We report the prevalence of (gross) inconsistencies per journal and subfield and subsequently explore trends of the extracted results over time. We visualized these results as well as temporal trends per journal and subfield. We also compare whether gross inconsistencies are more likely for results that are reported as statistically significant as compared to insignificant results. Last, we explore whether there are differences in the percentage of inconsistencies across different publishers: we included journals from general publishers such as Wiley, Elsevier, and Sage as well as dedicated publishers INFORMS, the Academy of Management, and an APA journal.
 
-As explained above, `statcheck` is better equipped to process `HTML` than `PDF` which might lead to a difference in reliability. However, the generalizability of the results increases considerably when we include studies that are only published in `PDF`. To deal with this trade-off, we report `HTML` results separately from `PDF` results and draw conclusions separately.
-
 # References
 
