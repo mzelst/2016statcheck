@@ -66,7 +66,7 @@ This paper is a direct replication of @Nuijten2015 and our results can be direct
 
 ## Sample
 
-The first- and second author compiled a list of 35 journals in management research that are analyzed for reporting inconsistencies. These journals are (primarily) empirical journals and are widely read throughout these fields. For each journal, we collected the articles published from 1995 through 2015 from CrossRef with the command line utility `getpapers` [`v0.4.9`; @getpapers], and subsequently downloaded all articles in `HTML` and/or `PDF` format available within the University of Cambridge subscription with `quickscrape` [`v0.4.7`; @quickscrape]. Table X depicts the list of journals and the downloaded articles per file format. 
+The first- and second author compiled a list of 35 journals in management research that are analyzed for reporting inconsistencies. These journals publish primarily empirical articles and are widely read throughout these fields. For each journal, we collected the articles published from 1995 through 2015 from CrossRef with the command line utility `getpapers` [`v0.4.9`; @getpapers], and subsequently downloaded all articles in `HTML` and/or `PDF` format available within the University of Cambridge subscription with `quickscrape` [`v0.4.7`; @quickscrape]. Table X depicts the list of journals and the downloaded articles per file format. 
 
 ```{r journal table, echo = FALSE, include=TRUE}
 journals <- read.csv(sprintf('%sscraping/journals.csv', run), header = TRUE)
@@ -95,7 +95,7 @@ The advantage of the automated procedure is that it allows us to assess the prev
 
 ## Analyses
 
-Given that the algorithm extracts (almost) all APA reported test results, the collected dataset is the population of APA-reported test results for the included journals. Hence, we refrain from using NHST in our analyses and only descriptively model the data. Considering that the extraction quality differs between `HTML` and `PDF` files, we will analyze the results from both separately.
+Given that the algorithm extracts (almost) all APA reported test results, the collected dataset is the population of APA-reported test results within the included journals. Hence, we refrain from using NHST in our analyses and only descriptively model the data. Considering that the extraction quality differs between `HTML` and `PDF` files, we will analyze and report the results from both separately.
 
 We report the prevalence of (gross) inconsistencies per journal and subfield and subsequently explore trends of the extracted results over time. We visualized these results as well as temporal trends per journal and subfield. We also compare whether gross inconsistencies are more likely for results that are reported as statistically significant as compared to insignificant results. Last, we explore whether there are differences in the percentage of inconsistencies across different publishers: we included journals from general publishers such as Wiley, Elsevier, and Sage as well as dedicated publishers such as INFORMS, the Academy of Management, and the APA.
 
