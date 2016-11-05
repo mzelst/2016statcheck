@@ -28,7 +28,7 @@ abstract:
  This study documents reporting inconsistencies in a sample of over X p-values reported in forty management journals from 1995 until 2015, using the new R package statcheck. We find that X% of the articles in management research contains at least one reporting inconsistency and X% contains at least one gross inconsistency, which might alter the conclusions. This corroborates/disagrees with findings by @Nuijten2015 who found similar/dissimilar results.
  
 date: '`r format(Sys.time(), "%d %B, %Y")`'
-output: papaja::apa6_pdf
+output: word_document
 style: ../bibliography/apa.csl
 bibliography: ../bibliography/statcheck.bib
 
